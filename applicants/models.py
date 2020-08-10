@@ -10,10 +10,10 @@ DEGREE_CHOICES =[
 class Applicant(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=45)
-    national_id = models.CharField(min_length=10, max_length=10)
+    national_id = models.CharField(max_length=10)
     age = models.IntegerField()
     email = models.EmailField(unique=True)
-    mobile_phone = models.CharField(min_length=11, max_length=11, unique=True)
+    mobile_phone = models.CharField(max_length=11, unique=True)
     address = models.TextField(blank=True, null=True)
     university = models.CharField(max_length=80)
     university_subject = models.CharField(max_length=50)
