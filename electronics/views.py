@@ -11,15 +11,7 @@ class ElectronicApplianceView(CreateView):
     model = ElectronicApplicant
     form_class = ElectronicApplianceForm
     template_name = 'electronics/request.html'
-    success_url = reverse_lazy('electronic-resume-upload-form')
-
-    def post(self, request, *args, **kwargs):
-        form = self.get_form()
-        if form.is_valid():
-            request.session['nat_id'] = form.cleaned_data.get('national_id')
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
+    success_url = reverse_lazy('index-page')
 
 
 class ElectronicResumeUpload(FormView):

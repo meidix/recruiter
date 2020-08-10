@@ -10,7 +10,7 @@
         </h4>
     </div>
     <div class="card-body">
-        <form method="post" class="needs-validation" novalidate>
+        <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
             {% csrf_token %}
             <p class='text-white' align="right">
             اطلاعات هویتی
@@ -252,6 +252,7 @@
             </p>
             <hr/>
             <div class="form-inline">
+                {{ form.resume }}
                 <label class="form-control-label text-white mb-3 mr-lg-5 ml-2" for="expected_salary">
                 حقوق
                 </label>

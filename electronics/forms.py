@@ -180,13 +180,18 @@ class ElectronicApplianceForm(forms.ModelForm):
             attrs={'class': 'form-check-input mb-2 mr-1 ml-lg-5'}
         ),
     )
-
     others = forms.CharField(
         label='مهارت های دیگر',
         required=False,
         widget=forms.Textarea(
             attrs={'class': 'form-control col-12'}
         ),
+    )
+
+    resume = forms.FileField(
+        max_length=1024*1024*8,
+        allow_empty_file=True,
+        required=False
     )
 
     expected_salary = forms.IntegerField(
@@ -208,7 +213,7 @@ class ElectronicApplianceForm(forms.ModelForm):
     class Meta:
         model = ElectronicApplicant
         fields = '__all__'
-        exclude = ('resume',)
+        #exclude = ('resume',)
 
 
 

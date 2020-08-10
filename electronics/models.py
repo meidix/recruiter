@@ -16,5 +16,6 @@ class ElectronicApplicant(Applicant):
     micro_controller = models.BooleanField(blank=True, default=False)
     power = models.BooleanField(null=True, blank=True, default=False)
     others = models.TextField(null=True, blank=True)
-    resume = models.ForeignKey('FileUpload', on_delete=models.SET_NULL, null=True, blank=True)
+    resume = models.FileField(upload_to='tmp/resume', null=True, blank=True)
+    #resume = models.ForeignKey('FileUpload', on_delete=models.SET_NULL, null=True, blank=True)
     expected_salary = models.FloatField(blank=True, null=True)
