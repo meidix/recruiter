@@ -5,6 +5,12 @@ from applicants.models import DEGREE_CHOICES
 from django import forms
 
 
+CHAR_FIELD_ERROR_MESSAGES = {
+    'required': 'وارد کردن این فیلد الزامیست',
+    'max_length': 'تعداد کاراکتر بیش از حد مجاز',
+    'min_length': 'تعداد کاراکتر کمتر از حد مجاز میباشد'
+}
+
 class ElectronicApplianceForm(forms.ModelForm):
 
     first_name = forms.CharField(
@@ -15,7 +21,7 @@ class ElectronicApplianceForm(forms.ModelForm):
                 'class': 'form-control mb-2 ml-sm-5 col-4' 
             }
         ),
-        error_messages={}
+        error_messages=CHAR_FIELD_ERROR_MESSAGES
     )
 
     last_name = forms.CharField(
@@ -24,7 +30,7 @@ class ElectronicApplianceForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={'class': 'form-control mb-2 ml-sm-5 col-4' }
         ),
-        error_messages={}
+        error_messages=CHAR_FIELD_ERROR_MESSAGES
     )
 
     national_id = forms.CharField(
@@ -34,15 +40,22 @@ class ElectronicApplianceForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={'class': 'form-control mb-2 ml-sm-5 col-4' }
         ),
-        error_messages={}
+        error_messages=CHAR_FIELD_ERROR_MESSAGES
     )
 
     age = forms.IntegerField(
         label='سن',
+        min_value=18,
+        max_value=65,
         widget=forms.NumberInput(
             attrs={'class': 'form-control mb-2 ml-sm-5 col-4' }
         ),
-        error_messages={}
+        error_messages={
+            'required': 'وارد کردن این فیلد الزامیست',
+            'invalid': 'مقدار وارد شده معتبر نمیباشد',
+            'min_value': ' کمتر از حد مجاز',
+            'max_value': 'بیشتر از حد مجاز'
+        }
     )
 
     email = forms.EmailField(
@@ -50,7 +63,10 @@ class ElectronicApplianceForm(forms.ModelForm):
         widget=forms.EmailInput(
             attrs={'class': 'form-control mb-2 ml-sm-5 col-4' }
         ),
-        error_messages={}
+        error_messages={
+            'required': 'وارد کردن این فیلد الزامیست',
+            'invalid': 'معتبر نمیباشد'
+        }
     )
 
     mobile_phone = forms.CharField(
@@ -60,7 +76,7 @@ class ElectronicApplianceForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={'class': 'form-control mb-2 ml-sm-5 col-4' }
         ),
-        error_messages={}
+        error_messages=CHAR_FIELD_ERROR_MESSAGES
     )
 
     address = forms.CharField(
@@ -68,8 +84,7 @@ class ElectronicApplianceForm(forms.ModelForm):
         required=False,
         widget=forms.Textarea(
             attrs={'class' : "form-control col-10 mb-2 ml-sm-5"}
-        ),
-        error_messages={}
+        )
     )
 
     university = forms.CharField(
@@ -78,7 +93,7 @@ class ElectronicApplianceForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={'class' : "form-control mb-2 ml-sm-5 col-2"}
         ),
-        error_messages={}
+        error_messages=CHAR_FIELD_ERROR_MESSAGES
     )
 
     university_subject = forms.CharField(
@@ -87,17 +102,15 @@ class ElectronicApplianceForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={'class' : "form-control mb-2 ml-sm-5 col-2"}
         ),
-        error_messages={}
+        error_messages=CHAR_FIELD_ERROR_MESSAGES
     )
 
     university_degree = forms.ChoiceField(
         label='مدرک تحصیلی',
-        max_length=15,
         widget=forms.Select(
             attrs={'class' : "form-control mb-2 ml-sm-5 col-2"}
         ),
         choices=DEGREE_CHOICES,
-        error_messages={}
     )
 
     work_reputations = forms.CharField(
@@ -106,7 +119,7 @@ class ElectronicApplianceForm(forms.ModelForm):
         widget=forms.Textarea(
             attrs={'class': 'form-control col-12'}
             ),
-        error_messages={}
+        error_messages=CHAR_FIELD_ERROR_MESSAGES
     )
 
     altium_designer = forms.BooleanField(
@@ -171,24 +184,28 @@ class ElectronicApplianceForm(forms.ModelForm):
         widget=forms.Textarea(
             attrs={'class': 'form-control col-12'}
         ),
-        required=False
     )
 
-    expected_salary = forms.DecimalField(
+    expected_salary = forms.IntegerField(
         max_value=999999,
         min_value=1000,
         label='حقوق پیشنهادی',
         required=False,
-        wdiget=forms.NumberInput(
+        widget=forms.NumberInput(
             attrs={'class': 'form-control mb-3'}
         ),
-        required=False
+        error_messages={
+            'required': 'وارد کردن این فیلد الزامیست',
+            'invalid': 'مقدار وارد شده معتبر نمیباشد',
+            'min_value': ' کمتر از حد مجاز',
+            'max_value': 'بیشتر از حد مجاز'
+        }
     )
     
     class Meta:
         model = ElectronicApplicant
         fields = '__all__'
-        exclude = 'resume'
+        exclude = ('resume',)
 
 
 
