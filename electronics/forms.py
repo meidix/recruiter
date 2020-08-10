@@ -1,4 +1,4 @@
-from .models import ElectronicApplicant
+from .models import ElectronicApplicant, FileUpload
 
 from applicants.models import DEGREE_CHOICES
 
@@ -65,7 +65,8 @@ class ElectronicApplianceForm(forms.ModelForm):
         ),
         error_messages={
             'required': 'وارد کردن این فیلد الزامیست',
-            'invalid': 'معتبر نمیباشد'
+            'invalid': 'معتبر نمیباشد',
+            'unique': 'این ایمیل قبلا ثبت شده است'
         }
     )
 
@@ -76,7 +77,9 @@ class ElectronicApplianceForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={'class': 'form-control mb-2 ml-sm-5 col-4' }
         ),
-        error_messages=CHAR_FIELD_ERROR_MESSAGES
+        error_messages=CHAR_FIELD_ERROR_MESSAGES.update({
+            'unique': 'این شماره موبایل قبلا ثبت شده است'
+        })
     )
 
     address = forms.CharField(
@@ -211,12 +214,12 @@ class ElectronicApplianceForm(forms.ModelForm):
 
 class UploadForm(forms.ModelForm):
 
-    resume = forms.FileField(
+    file = forms.FileField(
         max_length=1024*1024*8,
         allow_empty_file=True,
         required=False
     )
 
     class Meta:
-        model = ElectronicApplicant
-        fields = ['resume']
+        model = FileUpload
+        fields = '__all__'

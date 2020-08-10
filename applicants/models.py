@@ -7,6 +7,7 @@ DEGREE_CHOICES =[
     ('phd', 'دکتری')
 ]
 
+
 class Applicant(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=45)

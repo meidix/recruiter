@@ -11,7 +11,9 @@
     </div>
     <div class="card-body" align="right">
         <form method="post" class="form-group" enctype="multipart/form-data">
+            {% csrf_token %}
             {{ form.resume }}
+            <input type="submit" class="btn btn-success" value="ارسال">
         </form>
         <script>
             // Add the following code if you want the name of the file appear on select
