@@ -1,0 +1,97 @@
+body {
+    direction: rtl;
+}
+td {
+    vertical-align: middle !important;
+}
+th {
+    vertical-align: middle !important;
+}
+
+.modal-header {
+    direction: rtl;
+}
+.close {
+    margin: -1rem -1rem -1rem -1rem !important;
+}
+.modal-dialog {
+    direction: rtl;
+}
+.modal-body {
+    text-align: right !important;
+}
+.dropdown-item {
+    text-align: right !important;
+}
+.posts {
+    direction: rtl;
+}
+.text-allign-right {
+    text-align: right;
+}
+.skills {
+    direction: rtl;
+    background-color: yellowgreen;
+}
+.skill-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.skill-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.skill-input :checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.skill-input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.skill-container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.img-responsive {
+    height: auto;
+    width: auto;
+    max-height: 75px;
+    max-width: 75px;
+}
+.form-align-right {
+    direction: rtl;
+}
