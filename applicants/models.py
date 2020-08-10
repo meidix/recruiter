@@ -15,7 +15,7 @@ class Applicant(models.Model):
     email = models.EmailField(unique=True)
     mobile_phone = models.CharField(min_length=11, max_length=11, unique=True)
     address = models.TextField(blank=True, null=True)
-    university = models.CharField(max_length='80')
+    university = models.CharField(max_length=80)
     university_subject = models.CharField(max_length=50)
     university_degree = models.CharField(choices=DEGREE_CHOICES, max_length=15)
     work_reputations = models.TextField(blank=True, null=True)

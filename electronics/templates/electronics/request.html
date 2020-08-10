@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% block title%}<title>job entry</title>{% endblock %}
+
+{% block content %}
+<div class="card container mt-4 posts bg-dark">
+    <div class="card-header">
+        <h4 class="text-white text-allign-right" align="right">
+        فرم درخواست همکاری
+        </h4>
+    </div>
+    <div class="card-body">
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <p class='text-white' align="right">
+            اطلاعات هویتی
+            </p>
+            <hr/>
+            <div class="form-inline">
+                {{ form.first_name.label(class=" form-control-label text-white ml-sm-3", align="right") }} 
+                {{ form.first_name }}
+                <div class="valid-feedback">مورد پذیرش</div>
+                <div class="invalid-feedback">مورد پذیرش نیست</div>
+                {{ form.last_name.label(class="form-control-label text-white ml-sm-3") }}
+                {{ form.last_name }}
+                <div class="valid-feedback">مورد پذیرش</div>
+                <div class="invalid-feedback">مورد پذیرش نیست</div>
+            </div>
+            <div class="form-inline mt-2">
+                {{ form.national_id.label(class="form-control-label text-white ml-sm-3") }}
+                {{ form.national_id }}
+                <div class="valid-feedback">مورد پذیرش</div>
+                <div class="invalid-feedback">مورد پذیرش نیست</div>
+                {{ form.age.label(class="form-control-label text-white ml-sm-3") }}
+                {{ form.age }}
+                <div class="valid-feedback">مورد پذیرش</div>
+                <div class="invalid-feedback">مورد پذیرش نیست</div>
+            </div>
+            <hr/>
+            {% if form.first_name.error_messages %}
+                <ul class="form-group mb-3" align="right">
+                {% for error in form.first_name.error_messages %}
+                    <li class="alert alert-danger form-control">
+                    {{ error }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if form.last_name.error_messages %}
+                <ul class="form-group" align="right">
+                {% for error in form.last_name.error_messages %}
+                    <li class="alert alert-danger form-control">
+                    {{ error }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if form.national_id.error_messages %}
+                <ul class="form-group" align="right">
+                {% for error in form.national_id.error_messages %}
+                    <li class="alert alert-danger form-control">
+                    {{ error }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if form.age.error_messages %}
+                <ul class="form-group" align="right">
+                {% for error in form.age.error_messages %}
+                    <li class="alert alert-danger form-control">
+                    {{ error }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <hr/>
+            <p class='text-white mt-4' align="right">
+            اطلاعات تماس
+            </p>
+            <hr/>
+            <div class="form-inline">
+                {{ form.email.label(class="form-control-label text-white ml-sm-3") }}
+                {{ form.email }}
+                <div class="valid-feedback">مورد پذیرش</div>
+                <div class="invalid-feedback">مورد پذیرش نیست</div>
+                {{ form.mobile_phone.label(class="form-control-label text-white ml-sm-3") }}
+                {{ form.mobile_phone }}
+                <div class="valid-feedback">مورد پذیرش</div>
+                <div class="invalid-feedback">مورد پذیرش نیست</div>
+            </div>
+            <div class="form-inline mt-2">
+                {{ form.address.label(class="form-control-label text-white ml-sm-3", align="right") }}
+                {{ form.address }}
+                <div class="valid-feedback">مورد پذیرش</div>
+                <div class="invalid-feedback">مورد پذیرش نیست</div>
+            </div>
+            <hr/>
+            {% if form.email.error_messages %}
+                <ul class="form-group" align="right">
+                {% for error in form.email.error_messages %}
+                    <li class="alert alert-danger form-control">
+                    {{ error }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if form.mobile_phone.error_messages %}
+                <ul class="form-group" align="right">
+                {% for error in form.mobile_phone.error_messages %}
+                    <li class="alert alert-danger form-control">
+                    {{ error }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if form.address.error_messages %}
+                <ul class="form-group" align="right">
+                {% for error in form.Address.error_messages %}
+                    <li class="alert alert-danger form-control">
+                    {{ error }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <hr/>
+            <p class='text-white mt-4' align="right">
+            تحصیلات
+            </p>
+            <hr/>
+            <div class="form-inline">
+                {{ form.university.label(class="form-control-label text-white  ml-sm-3") }}
+                {{ form.university }}
+                <div class="valid-feedback">مورد پذیرش</div>
+                <div class="invalid-feedback">مورد پذیرش نیست</div>
+                {{ form.university_subject.label(class="form-control-label text-white  ml-sm-3") }}
+                {{ form.university_subject }}
+                <div class="valid-feedback">مورد پذیرش</div>
+                <div class="invalid-feedback">مورد پذیرش نیست</div>
+                {{ form.university_degree.label(class="form-control-label text-white  ml-sm-3") }}
+                {{ form.university_degree }}
+                <div class="valid-feedback">مورد پذیرش</div>
+                <div class="invalid-feedback">مورد پذیرش نیست</div>
+            </div>
+            <hr/>
+            {% if form.university.error_messages %}
+                <ul class="form-group" align="right">
+                {% for error in form.university.error_messages %}
+                    <li class="alert alert-danger form-control">
+                    {{ error }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if form.university_subject.error_messages %}
+                <ul class="form-group" align="right">
+                {% for error in form.university_subject.error_messages %}
+                    <li class="alert alert-danger form-control">
+                    {{ error }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if form.university_degree.error_messages %}
+                <ul class="form-group" align="right">
+                {% for error in form.university_degree.error_messages %}
+                    <li class="alert alert-danger form-control">
+                    {{ error }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <hr/>
+            <p class='text-white mt-4' align="right">
+            سوابق کاری
+            </p>
+            <hr/>
+            <div class="form-inline">
+                {{ form.work_reputations.label(class="form-control-label text-white") }}
+                {{ form.work_reputations }}
+                <div class="valid-feedback">مورد پذیرش</div>
+                <div class="invalid-feedback">مورد پذیرش نیست</div>
+            </div>
+            <hr/>
+            <hr/>
+            <p class='text-white mt-4' align="right">
+             مهارت ها
+            </p>
+            <hr/>
+            <div class="form-check mb-4 form-align-right" align="right">
+                {{ form.microcontroller.label(class="form-check-label text-white ml-1", align="right") }}
+                {{ form.microcontroller }}
+                {{ form.power.label(class="form-check-label text-white ml-1 mr-lg-5") }}
+                {{ form.power }}
+                {{ form.atmel_studio.label(class="form-check-label text-white ml-1 mr-lg-5", align="right") }}
+                {{ form.atmel_studio }}
+            </div>
+            <div class="form-check" align="right">
+                {{ form.altium_designer.label(class="form-check-label text-white ml-1", align="right") }}
+                {{ form.altium_designer }}
+                {{ form.arduino.label(class="form-check-label text-white ml-1 mr-lg-5") }}
+                {{ form.arduino }}
+                {{ form.code_vision.label(class="form-check-label text-white ml-1 mr-lg-5") }}
+                {{ form.code_vision }}
+                {{ form.proteus.label(class="form-check-label text-white ml-1 mr-lg-5") }}
+                {{ form.proteus }}
+            </div>
+            <div class="form-inline mt-lg-4">
+                {{ form.others.label(class="form-control-label text-white ml-3") }}
+                {{ form.others }}
+            </div>
+            <hr/>
+             <p class='text-white mt-4' align="right">
+              حقوق پیشنهادی
+            </p>
+            <hr/>
+            <div class="form-inline">
+                {{ form.expected_salary.label(class="form-control-label text-white mb-3 mr-lg-5 ml-2") }}
+                {{form.expected_salary }}
+                <div class="valid-feedback">مورد پذیرش</div>
+                <div class="invalid-feedback">مورد پذیرش نیست</div>
+            </div>
+            <div class="form-group">
+               <input class="btn btn-success form-control" value="تائید" type="submit">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

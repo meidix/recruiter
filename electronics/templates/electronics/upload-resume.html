@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title%}<title>job entry</title>{% endblock %}
+
+{% block content %}
+<div class="card container mt-4 posts bg-dark">
+    <div class="card-header">
+        <h4 class="text-white text-allign-right" align="right">
+        فرم درخواست همکاری
+        </h4>
+    </div>
+    <div class="card-body" align="right">
+        <form method="post" class="form-group" enctype="multipart/form-data">
+            {{ form.resume }}
+        </form>
+        <script>
+            // Add the following code if you want the name of the file appear on select
+            $(".custom-file-input").on("change", function() {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        </script>
+    </div>
+    <div class="card-footer" align="right">
+        <a class="btn btn-warning">
+        رد کن
+        </a>
+    <div>
+</div>
+{% endblock %}
