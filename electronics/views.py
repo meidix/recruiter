@@ -12,7 +12,7 @@ class ElectronicApplianceView(CreateView):
     model = ElectronicApplicant
     form_class = ElectronicApplianceForm
     template_name = 'electronics/request.html'
-    success_url = reverse_lazy('index-page')
+    success_url = reverse_lazy('electronic-success')
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
@@ -30,10 +30,10 @@ class ApplicanceSuccessView(TemplateView):
     def dispatch(self, request, *args, **kwargs):
         self.nat_id = request.session['nat_id']
         request.session.pop('nat_id')
-        return super().dispatch(request, args, kawrgs)
+        return super().dispatch(request, *args, **kwargs)
     
-    def get_context_data(self, *args, **kawrgs):
-        context = super().get_context_data(args, kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         applicant = ElectronicApplicant.objects.filter(national_id=self.nat_id).first()
         context['appl'] = applicant
         return context
