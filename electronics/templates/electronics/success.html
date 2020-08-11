@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Success</title>{% endblock %}
+
+{% block content %}
+<div class="card container mt-4 posts bg-dark">
+    <div class="card-header">
+        <h4 class="text-white text-allign-right" align="right">
+       درخواست با موفقیت ثبت شد
+        </h4>
+    </div>
+    <div class="card-body">
+        <p class="text-white" align="right">
+        درخواست شما با نام و نام خانوادگی <strong>{{ appl.first_name }} {{ appl.last_name }}</strong>با کد ملی <strong>{{ appl.national_id }}</strong>با موفقیت ثبت گردید.
+        نتیجه بررسی درخواست شما از طریق ایمیل <strong>{{ appl.email }}</strong> یا شماره موبایل <strong>{{ appl.mobile_phone }}</strong> اطلاع رسانی میگردد
+        با تشکر
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -1,9 +1,10 @@
-from .forms import ElectronicApplianceForm, UploadForm
+from .forms import ElectronicApplianceForm
 from .models import ElectronicApplicant
 
 from django.contrib import messages
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, FormView
 
 
@@ -13,26 +14,30 @@ class ElectronicApplianceView(CreateView):
     template_name = 'electronics/request.html'
     success_url = reverse_lazy('index-page')
 
-
-class ElectronicResumeUpload(FormView):
-    form_class = UploadForm
-    template_name = 'electronics/upload-resume.html'
-    success_url = reverse_lazy('index-page')
-
     def post(self, request, *args, **kwargs):
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-
+        form = self.get_form()
         if form.is_valid():
-            resume = request.FILES.get('resume')
-            national_id = request.session['nat_id']
-            user = ElectronicApplicant.objects.filter(national_id=national_id).first()
-            request.session.pop('nat_id')
-            user.resume = resume
-            messages.success(request, 'رزومه با موفقیت بارگذاری شد')
+            request.session['nat_id'] = form.cleaned_data['national_id']
             return self.form_valid(form)
-        
-        messages.error(request, 'فایلی آپلود نشده')
-        return self.form_invalid(form)
+        else:
+            return self.form_invalid(form)
+
+
+class ApplicanceSuccessView(TemplateView):
+    template_name = 'electronics/success.html'
+    nat_id = None
+
+    def dispatch(self, request, *args, **kwargs):
+        self.nat_id = request.session['nat_id']
+        request.session.pop('nat_id')
+        return super().dispatch(request, args, kawrgs)
+    
+    def get_context_data(self, *args, **kawrgs):
+        context = super().get_context_data(args, kwargs)
+        applicant = ElectronicApplicant.objects.filter(national_id=self.nat_id).first()
+        context['appl'] = applicant
+        return context
+
+
          
 

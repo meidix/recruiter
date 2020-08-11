@@ -1,7 +1,6 @@
-from .models import ElectronicApplicant, FileUpload
+from .models import ElectronicApplicant
 
 from django.contrib import admin
 
 
 admin.site.register(ElectronicApplicant)
-admin.site.register(FileUpload)

@@ -20,5 +20,5 @@ from django.urls import path
 
 urlpatterns = [
     path('request/', views.ElectronicApplianceView.as_view(), name='electronic-form'),
-    path('resume/', views.ElectronicResumeUpload.as_view(), name='electronic-resume-upload-form'),
+    path('request/success/', views.ApplicanceSuccessView.as_view(), name='electronic-success'),
 ]

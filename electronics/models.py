@@ -3,10 +3,6 @@ from applicants.models import Applicant
 from django.db import models
 
 
-class FileUpload(models.Model):
-    file = models.FileField(null=True, blank=True)
-
-
 class ElectronicApplicant(Applicant):
     altium_designer = models.BooleanField(blank=True, default=False)
     arduino = models.BooleanField(blank=True, default=False)

@@ -1,4 +1,4 @@
-from .models import ElectronicApplicant, FileUpload
+from .models import ElectronicApplicant
 
 from applicants.models import DEGREE_CHOICES
 
@@ -216,15 +216,3 @@ class ElectronicApplianceForm(forms.ModelForm):
         #exclude = ('resume',)
 
 
-
-class UploadForm(forms.ModelForm):
-
-    file = forms.FileField(
-        max_length=1024*1024*8,
-        allow_empty_file=True,
-        required=False
-    )
-
-    class Meta:
-        model = FileUpload
-        fields = '__all__'
