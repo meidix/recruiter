@@ -9,7 +9,7 @@
         فرم درخواست همکاری
         </h4>
     </div>
-    <div class="card-body">
+    <div class="card-body desktop-content">
         <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
             {% csrf_token %}
             <p class='text-white' align="right">
@@ -208,37 +208,44 @@
              مهارت ها
             </p>
             <hr/>
-            <div class="form-check mb-4 form-align-right" align="right">
-                <label class="form-check-label text-white ml-1" align="right" for="micro_controller">
+            <ul class=" form-group form-check mb-4 form-align-right" align="right">
+                <label class="form-check-label text-white ml-1 mb-3" align="right" for="micro_controller">
                  میکروکنترلر ها
                 </label>
                 {{ form.micro_controller }}
-                <label class="form-check-label text-white ml-1 mr-lg-5" align="right" for="power">
+                <br/>
+                <label class="form-check-label text-white ml-1 mb-3" align="right" for="power">
                 مدارات تغذیه
                 </label>
                 {{ form.power }}
-                <label class="form-check-label text-white ml-1 mr-lg-5"align="right" for="ateml_studio">
+                <br/>
+                <label class="form-check-label text-white ml-1 mb-3"align="right" for="ateml_studio">
                 اتمل استودیو(Ateml Studio)
                 </label>
                 {{ form.atmel_studio }}
-            </div>
-            <div class="form-check" align="right">
-                <label class="form-check-label text-white ml-1"  align="right" for="altium_designer">
+                <br/>
+                <label class="form-check-label text-white ml-1 mb-3"  align="right" for="altium_designer">
                 آلتیوم دیزانیر(Altium Designer)
                 </label>
                 {{ form.altium_designer }}
-                <label class="form-check-label text-white ml-1 mr-lg-5" for="arduino">
+                <br/>
+                <label class="form-check-label text-white ml-1 mb-3" for="arduino">
                 آردوینو(Arduino)
                 </label>
                 {{ form.arduino }}
-                <label class="form-check-label text-white ml-1 mr-lg-5" for="code_vision">
+                <br/>
+                <label class="form-check-label text-white ml-1 mb-3" for="code_vision">
                 کد ویژن(Code Vision)
                 </label>
                 {{ form.code_vision }}
-                <label class="form-check-label text-white ml-1 mr-lg-5" for="proteus">
+                <br/>
+                <label class="form-check-label text-white ml-1 mb-3" for="proteus">
                 پروتئوس(proteus)
                 </label>
                 {{ form.proteus }}
+            </div>
+            <div class="form-check" align="right">
+                
             </div>
             <div class="form-inline mt-lg-4">
                 <label class="form-control-label text-white ml-3" for="others">
@@ -248,13 +255,13 @@
             </div>
             <hr/>
              <p class='text-white mt-4' align="right">
-             رزومه و حقوق پیشنهادی
+             رزومه   
             </p>
             <hr/>
             <div class="form-inline">
                 {{ form.resume }}
                 <label class="form-control-label text-white mb-3 mr-lg-5 ml-2" for="expected_salary">
-                حقوق
+                حقوق پیشنهادی
                 </label>
                 {{form.expected_salary }}
                 <div class="valid-feedback">مورد پذیرش</div>
