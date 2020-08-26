@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {% block title %}{% endblock %}
 
+
         <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -15,7 +16,12 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         />
+
+        {% block style %}
         <link rel="stylesheet" href="{% static 'applicants/style.css' %}" />
+        {% endblock %}
+
+
     </head>
     <body>
         <nav class="navbar navbar-dark navbar-expand-lg navbar-light bg-dark">

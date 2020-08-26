@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'applicants.apps.ApplicantsConfig',
     'electronics.apps.ElectronicsConfig',
+    'admins.apps.AdminsConfig',
 ]
 
 MIDDLEWARE = [
@@ -118,5 +119,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+
+AUTH_USER_MODEL = 'admins.Administrator'
 
 STATIC_URL = '/static/'
