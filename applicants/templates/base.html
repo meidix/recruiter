@@ -34,6 +34,13 @@
                 درباه ما
                 </a>
             </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <a href="{% url 'logout-page' %}" class="nav-link">
+                 خروج
+                </a>
+            </li>
+            {% endif %}
         </ul>
         </nav>
             {% block content %}

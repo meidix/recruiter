@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>adminstators</title>{% endblock %}
+
+{% block content %}
+<div class="card container mt-4 posts bg-dark">
+    <div class="card-header">
+    <h4 class="text-white text-align-right display-6" align="right">
+     توجه !!! 
+    </h4>
+    </div>
+    <div class="card-body">
+        <form action="" class="form-inline" method="post">
+            {% csrf_token %}
+            <input type="submit" value="پاک کن" class="btn btn-danger form-control">
+        </form>
+        <a href="{% url 'applicants-list' %}" class="btn btn-info">بازگشت</a>
+    </div>
+    <div class="card-footer">
+    </div>
+</div>
+{% endblock %}

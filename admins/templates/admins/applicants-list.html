@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>adminstators</title>{% endblock %}
+
+{% block content %}
+<div class="card container mt-4 posts bg-dark">
+    <div class="card-header">
+    <h4 class="text-white text-align-right" align="center">
+     ورود مدیران
+    </h4>
+    </div>
+    <div class="card-body">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>نام کامل</th>
+                    <th>دانشگاه</th>
+                    <th>رشته تحصیلی</th>
+                    <th>مدرک تحصیلی</th>
+                    <th>رزومه</th>
+                    <th>نمایش کامل</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for obj in object_list %}
+                <tr>
+                    <td>{{ obj.pk }}</td>
+                    <td>{{ obj.first_name }} {{ obj.last_name }}</td>
+                    <td>{{ obj.university }}</td>
+                    <td>{{ obj.university_subject }}</td>
+                    <td>{{ obj.university_degree }}</td>
+                    {% if obj.resume %}
+                    <td><a href="{% url 'resume-download' obj.pk %}" download>دانلود</a></td>
+                    {% else %}
+                    <td>ندارد</td>
+                    {% endif %}
+                    <td><a href="{% url 'applicant-profile' obj.pk %}" class="btn btn-info">نمایش</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+    </div>
+</div>
+{% endblock %}
