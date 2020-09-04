@@ -1,4 +1,6 @@
 from django.http import FileResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
 from django.shortcuts import redirect
@@ -27,12 +29,12 @@ class SignInView(LoginView):
 class SignOutView(LogoutView):
     template_name = 'admins/logout.html'
 
-class ApplicantsListView(ListView):
+class ApplicantsListView(LoginRequiredMixin, ListView):
     model = ElectronicApplicant
     template_name = 'admins/applicants-list.html'
 
 
-class ApplicantDetailView(DetailView):
+class ApplicantDetailView(LoginRequiredMixin, DetailView):
     model = ElectronicApplicant
     template_name = 'admins/applicant-profile.html'
 
@@ -69,13 +71,13 @@ class ApplicantDetailView(DetailView):
         return context
 
 
-class ApplicantDeleteView(DeleteView):
+class ApplicantDeleteView(LoginRequiredMixin, DeleteView):
     model = ElectronicApplicant
     template_name = 'admins/delete-applicant.html'
     success_url = reverse_lazy('applicants-list')
 
 
-
+@login_required
 def download(request, id):
     obj = ElectronicApplicant.objects.get(id=id)
     filename = obj.resume.path

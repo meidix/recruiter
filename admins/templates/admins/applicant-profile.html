@@ -44,12 +44,9 @@
             {% endif %}
         </p>
     </div>
-    <div class="card-footer">
-        <div class="form-inline">
-            <a href="{% url 'applicants-list' %}" class="btn btn-success form-control mr-5 ml-3 col-5">بازگشت</a>
-            <a 
-            href="{% url 'applicant-delete' object.id %}" 
-            class="btn btn-danger form-control col-5">پاک کن</a>
+    <div class="card-footer justify-content-center" >
+        <div class="form-group" align="center">
+            <a align="center" href="{% url 'applicants-list' %}" class="btn btn-success form-control mr-lg-5 ml-3 col-5">بازگشت</a>
         </div>
     </div>
 </div>
